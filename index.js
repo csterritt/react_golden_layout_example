@@ -3,39 +3,40 @@ const ReactDOM = require('react-dom');
 
 import { createStore } from 'redux';
 
-const Counter = React.createClass({
-  render: function() {
-    return (
+const Counter = ({
+  count,
+  onIncrement,
+  onDecrement
+}) => {
+  return (
+    <div>
+      <div>Count: </div>
       <div>
-        <div>Count: </div>
-        <div>
-          <button onClick={this.props.onIncrement}>+</button>
-          {this.props.count}
-          <button onClick={this.props.onDecrement}>-</button>
-        </div>
+        <button onClick={onIncrement}>+</button>
+        {count}
+        <button onClick={onDecrement}>-</button>
       </div>
-    );
-  }
-});
+    </div>
+  );
+};
 
-const App = React.createClass({
-  render: function() {
-    const appStore = this.props.appStore;
-    return (
-      <div>
-        <h3>React basic counter app!</h3>
-        <Counter count={ appStore.getState() }
-                 onIncrement={ () =>
-                   appStore.dispatch({type: "INCREMENT"})
-                 }
-                 onDecrement={ () =>
-                   appStore.dispatch({type: "DECREMENT"})
-                 }
-        />
-      </div>
-    );
-  }
-});
+const App = ({
+  appStore
+}) => {
+  return (
+    <div>
+      <h3>React basic counter app!</h3>
+      <Counter count={ appStore.getState() }
+               onIncrement={ () =>
+                 appStore.dispatch({type: "INCREMENT"})
+               }
+               onDecrement={ () =>
+                 appStore.dispatch({type: "DECREMENT"})
+               }
+      />
+    </div>
+  );
+};
 
 const reducer = (state = 0, action) => {
   switch (action.type) {
