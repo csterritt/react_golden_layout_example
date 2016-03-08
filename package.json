@@ -15,10 +15,20 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "expect": "^1.14.0",
+    "expect-jsx": "^2.3.0",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha './src/**/*.spec.js' --compilers js:babel-core/register"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
   },
   "author": "Chris Sterritt",
   "license": "ISC"
