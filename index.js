@@ -1,4 +1,3 @@
-const React = require('react');
 const ReactDOM = require('react-dom');
 
 import { createStore } from 'redux';
@@ -59,7 +58,7 @@ const render = () => {
     <App appStore={store}/>,
     document.getElementById('ReactApp')
   );
-}
+};
 
 const store = createStore(reducer);
 store.subscribe(render);
