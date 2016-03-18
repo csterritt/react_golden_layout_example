@@ -1,7 +1,8 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from "react";
+import ReactDOM from "react-dom";
 
-import { createStore } from 'redux';
+import { createStore } from "redux";
+import { goldenLayoutSetup } from "./src/golden_layout_setup";
 
 const Counter = ({
   count,
@@ -41,11 +42,11 @@ const App = ({
 
 const reducer = (state = { count: 0 }, action) => {
   switch (action.type) {
-    case 'INCREMENT':
+    case "INCREMENT":
       return {
         count: state.count + 1
       };
-    case 'DECREMENT':
+    case "DECREMENT":
       return {
         count: state.count - 1
       };
@@ -57,10 +58,11 @@ const reducer = (state = { count: 0 }, action) => {
 const render = () => {
   ReactDOM.render(
     <App appStore={store}/>,
-    document.getElementById('ReactApp')
+    document.getElementById("reactApp")
   );
 };
 
+goldenLayoutSetup(document.getElementById("layoutContainer"));
 const store = createStore(reducer);
 store.subscribe(render);
 render();
