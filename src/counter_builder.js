@@ -10,14 +10,6 @@ var Counter = React.createClass({
     this.setState({count: this.state.count + 1});
   },
 
-  componentWillMount: function() {
-    console.log("Counter componentWillMount called");
-  },
-
-  componentWillUnmount: function() {
-    console.log("Counter componentWillUnmount called");
-  },
-
   render: function() {
     return (
         <div className="counter-block">

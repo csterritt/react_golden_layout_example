@@ -1,8 +1,10 @@
 import ReactDOM from "react-dom";
 import GoldenLayout from "golden-layout";
 
-import createReactCounter from "./counter_builder";
-import createNamedReactCounter from "./named_counter_builder";
+import { createReactCounter } from "./counter_builder";
+import { createNamedReactCounter } from "./named_counter_builder";
+
+let myLayout = null;
 
 const goldenLayoutSetup = function(root) {
   var config = {
@@ -25,7 +27,7 @@ const goldenLayoutSetup = function(root) {
     }
   })();
 
-  const myLayout = new GoldenLayout(config, root);
+  myLayout = new GoldenLayout(config, root);
 
   myLayout.registerComponent("help-text", function(container, state) {
     container.getElement().html(
@@ -59,7 +61,7 @@ const goldenLayoutSetup = function(root) {
       var state = event.config.componentState;
       if (state["location"]) {
         var react_component = document.getElementById(state["location"]);
-        ReactDOM.unmountComponentAtNode(react_component[0]);
+        ReactDOM.unmountComponentAtNode(react_component);
       }
     }
   });
@@ -68,4 +70,4 @@ const goldenLayoutSetup = function(root) {
 };
 
 
-export { goldenLayoutSetup };
+export { goldenLayoutSetup, myLayout };

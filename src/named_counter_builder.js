@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 
 var FormRow = React.createClass({
   render: function() {
-    res = (
+    return (
         <div className="row collapse">
           <div className="small-3 columns">{this.props.children[0]}</div>
           <div className="small-8 columns">{this.props.children[1]}</div>
           <div className="small-1 columns">{this.props.children[2]}</div>
-        </div>);
-    return res;
+        </div>
+    );
   }
 });
 
@@ -48,14 +48,6 @@ var NamedCounter = React.createClass({
     }
   },
 
-  componentWillMount: function() {
-    console.log("NamedCounter componentWillMount called");
-  },
-
-  componentWillUnmount: function() {
-    console.log("NamedCounter componentWillUnmount called");
-  },
-
   render: function() {
     var res = null;
 
@@ -69,7 +61,7 @@ var NamedCounter = React.createClass({
                    onChange={this.handleChange}
                    onKeyPress={this.handleKeyPress} />
 
-            <a className="tiny button postfix" onClick={this.setName}>Set</a>
+            <button onClick={this.setName}>Set</button>
           </FormRow>
       );
     }

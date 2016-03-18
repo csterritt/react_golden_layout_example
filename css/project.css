@@ -1,0 +1,62 @@
+*, *:before, *:after
+{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 5px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.fill-rest {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+#layoutContainer {
+  flex: 1 1 auto;
+}
+
+.header {
+  height: 100px;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 4px 20px;
+}
+
+.header ul {
+  margin: 0;
+
+  list-style: none;
+}
+
+.header ul li {
+  border: 1px solid slategray;
+
+  padding: 2px;
+
+  background-color: lightblue;
+
+  cursor: pointer;
+}
