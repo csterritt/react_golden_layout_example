@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import GoldenLayout from "golden-layout";
 
+import { createReactHelp } from "./help_builder";
 import { createReactCounter } from "./counter_builder";
 import { createNamedReactCounter } from "./named_counter_builder";
 
@@ -30,8 +31,14 @@ const goldenLayoutSetup = function(root) {
   myLayout = new GoldenLayout(config, root);
 
   myLayout.registerComponent("help-text", function(container, state) {
-    container.getElement().html(
-        "<h3>Help</h3><p>Click and drag from the items at the top right.</p>");
+    var its_id = nextId();
+    var location = "react_help_" + its_id;
+    container.getElement().html("<div id='" + location + "'></div>");
+    state["location"] = location;
+    container.setState(state);
+    setTimeout(function() {
+      createReactHelp(location);
+    }, 1);
   });
 
   myLayout.registerComponent("react-counter", function(container, state) {
