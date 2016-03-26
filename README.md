@@ -1,6 +1,6 @@
 # React working with Golden Layout
 
-This is based on a project I did to get the minimal tooling up and running to support React development, following [Pete Hunt's awesome webpack setup tutorial](https://github.com/petehunt/webpack-howto).
+This is based on [a project I did to get the minimal tooling up and running to support React development](https://github.com/csterritt/react-redux-webpack-simple-setup), following [Pete Hunt's awesome webpack setup tutorial](https://github.com/petehunt/webpack-howto).
 
 ## Installation
 
@@ -12,7 +12,9 @@ Next, run `npm install` to install all dependencies.
 
 Then, you can run `npm test` to run some (unbelievably trivial) tests.
 
-Finally, you can run `webpack` to compile all JSX, etc. into the `index.js` file.  Open `index.html` in the browser of your choice, and it all should work.
+Finally, you can run `npm start` to build the application, serve it on port 4000, and auto-reload when code changes.
+
+You can run also `webpack` to compile all JSX, etc. into the `index.js` file.  Open `index.html` in the browser of your choice, and it all should work.
  
 There are a lot of other `webpack` command line options, see the webpack tutorial above.
 

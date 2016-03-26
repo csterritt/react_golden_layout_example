@@ -20,47 +20,18 @@ const goldenLayoutSetup = function(root) {
     }]
   };
 
-  var nextId = (function() {
-    var next_id = 0;
-    return function() {
-      next_id += 1;
-      return next_id;
-    }
-  })();
-
   myLayout = new GoldenLayout(config, root);
 
   myLayout.registerComponent("help-text", function(container, state) {
-    var its_id = nextId();
-    var location = "react_help_" + its_id;
-    container.getElement().html("<div id='" + location + "'></div>");
-    state["location"] = location;
-    container.setState(state);
-    setTimeout(function() {
-      createReactHelp(location);
-    }, 1);
+    registerComponentWithCallback(container, state, createReactHelp);
   });
 
   myLayout.registerComponent("react-counter", function(container, state) {
-    var its_id = nextId();
-    var location = "react_counter_" + its_id;
-    container.getElement().html("<div id='" + location + "'></div>");
-    state["location"] = location;
-    container.setState(state);
-    setTimeout(function() {
-      createReactCounter(location);
-    }, 1);
+    registerComponentWithCallback(container, state, createReactCounter);
   });
 
   myLayout.registerComponent("named-react-counter", function(container, state) {
-    var its_id = nextId();
-    var location = "react_counter_" + its_id;
-    container.getElement().html("<div id='" + location + "'></div>");
-    state["location"] = location;
-    container.setState(state);
-    setTimeout(function() {
-      createNamedReactCounter(location);
-    }, 1);
+    registerComponentWithCallback(container, state, createNamedReactCounter);
   });
 
   myLayout.on("beforeItemDestroyed", function(event) {
@@ -68,12 +39,32 @@ const goldenLayoutSetup = function(root) {
       var state = event.config.componentState;
       if (state["location"]) {
         var react_component = document.getElementById(state["location"]);
-        ReactDOM.unmountComponentAtNode(react_component);
+        if (react_component) {
+          ReactDOM.unmountComponentAtNode(react_component);
+        }
       }
     }
   });
 
   myLayout.init();
+};
+
+const nextId = (function() {
+  var next_id = 0;
+  return function() {
+    next_id += 1;
+    return next_id;
+  }
+})();
+
+const registerComponentWithCallback = function(container, state, callback) {
+  var its_id = nextId();
+  var location = "component_" + its_id;
+  var new_state = Object.assign({}, state);
+  container.getElement().html("<div id='" + location + "'></div>");
+  new_state["location"] = location;
+  container.setState(new_state);
+  setTimeout(function() { callback(location) }, 1);
 };
 
 

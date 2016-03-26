@@ -4,6 +4,10 @@ module.exports = {
         path: __dirname,
         filename: "bundle.js"
     },
+    devServer: {
+      inline: true,
+      port: 4000
+    },
     module: {
         loaders: [
             { test: /\.css$/, loader: "style!css" },
