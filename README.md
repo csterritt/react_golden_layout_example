@@ -35,3 +35,9 @@ The code in `menu_builder.js` sets up the menu in the top-right part of the page
 The code in `golden_layout_setup.js` uses Golden Layout's `registerComponent` function to say what happens when those panes are generated.
 
 That's also where the `beforeItemDestroyed` binding is set up to run ReactDOM's `unmountComponentAtNode` method before the Golden Layout pane is destroyed.
+
+# IMPORTANT NOTE
+
+There's a bug (probably in my code) where if you add more than one of the same kind of component (e.g., several "Help" blocks), then when you close one another's content may just disappear.
+
+This doesn't happen with different kinds of components.  I have a similar setup for a project at work which only allows one instance of any component (by removing that component from the list once you choose it), so I haven't seen this before.
