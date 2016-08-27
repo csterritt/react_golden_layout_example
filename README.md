@@ -43,3 +43,5 @@ There's a bug (probably in my code) where if you add more than one of the same k
 This doesn't happen with different kinds of components.  I have a similar setup for a project at work which only allows one instance of any component (by removing that component from the list once you choose it), so I haven't seen this before.
 
 Also, this isn't up to date with the latest Golden Layout.
+
+Git commit test.
